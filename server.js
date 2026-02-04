@@ -25,7 +25,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://your-frontend-name.vercel.app'  // Will update this later
+    'https://vector-mind-frontend.vercel.app/'  // Will update this later
   ],
   credentials: true
 }));
