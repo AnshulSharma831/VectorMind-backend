@@ -28,24 +28,13 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error(`CORS blocked: ${origin}`));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  optionsSuccessStatus: 200
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://your-frontend-name.vercel.app'  // Will update this later
+  ],
+  credentials: true
 }));
-
-// IMPORTANT for preflight
-app.options('*', cors());
 app.use(express.json());
 app.use(express.static('public'));
 
