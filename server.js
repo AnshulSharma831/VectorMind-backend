@@ -21,19 +21,16 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middleware
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:5173',
-  'https://vector-mind-frontend.vercel.app/'
-];
-
+// Middleware
 app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://vector-mind-frontend.vercel.app/'  // Will update this later
+    'https://vector-mind-frontend.vercel.app'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(express.static('public'));
